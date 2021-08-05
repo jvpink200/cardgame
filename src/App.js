@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { Navbar, NavbarBrand } from 'reactstrap';
 import './App.css';
+import Directory from './components/DirectoryComponent';
+import { CARDS } from './shared/cards';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cards: CARDS
+    }
+  }
+  render () {
+    return (
+      <div className="App">
+        <Navbar dark color="info">
+        <div className="container">
+            <NavbarBrand href="/">Card Game</NavbarBrand>
+        </div>
+        </Navbar>
+        <Directory cards={this.state.cards}/>
+      </div>
+    );
+  }
 }
 
 export default App;
